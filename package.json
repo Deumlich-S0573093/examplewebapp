@@ -1,0 +1,20 @@
+{
+  "name": "yapp",
+  "version": "1.0.0",
+  "description": "Yet another ToDo App; but sophisticated",
+  "main": "main.js",
+  "scripts": {
+    "start": "nodemon main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gl-imi.f4.htw-berlin.de/group04_wtat_ss21/yapp.git"
+  },
+  "author": "Group04 - WTAT -SS21",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  }
+}
