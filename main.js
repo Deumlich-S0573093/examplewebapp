@@ -3,7 +3,11 @@
 const express = require("express"),
     app = express(),
     logConstroller = require("./controllers/logController"),
-    errorController = require("./controllers/errorController");
+    errorController = require("./controllers/errorController"),
+    mainController = require("./controllers/mainController"),
+    topicController = require("./controllers/topicController"),
+    todoController = require("./controllers/todoController"),
+    bookmarkController = require("./controllers/bookmarkController");
 
 let port = 0;
 
@@ -21,9 +25,10 @@ app.use(express.json());
 // basic request logging
 app.use(logConstroller.logRequests);
 
-app.get("/", (req, res) => {
-    res.send("Yet antoher todo app");
-});
+app.use("/", mainController.sendOverview);
+app.use("/topics", topicController.sendTopics);
+app.use("/todos", todoController.senToDos);
+app.use("/bookmarks", bookmarkController.sendBookmarks);
 
 app.use(errorController.pageNotFound);
 app.use(errorController.internalServer);
