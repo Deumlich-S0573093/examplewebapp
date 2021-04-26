@@ -7,6 +7,7 @@ const express = require("express"),
 
 let port = 0;
 
+app.set("view engine", "ejs");
 app.set("port", process.env.PORT || 3000);
 
 // body parsing
@@ -21,8 +22,9 @@ app.use(express.json());
 // basic request logging
 app.use(logConstroller.logRequests);
 
+// TODO: remove when controllers get implemented
 app.get("/", (req, res) => {
-    res.send("Yet antoher todo app");
+    res.render("index");
 });
 
 app.use(errorController.pageNotFound);
