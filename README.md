@@ -5,7 +5,7 @@
 ### Git Workflow
 
 * ***Feature-Branch-Workflow***
-1. Before starting your work on a new feature, always pull the newest version of [main](https://github.com/nimaazha/OculusQuestFitnessApp/tree/main) branch.
+1. Before starting your work on a new feature, always pull the newest version of [main](https://gl-imi.f4.htw-berlin.de/group04_wtat_ss21/yapp) branch.
 2. Create a new branch from main and give it a descriptive Name
     * You can use your Jira card id and name for this, which can be found in the card url (for example YAPP-XX_StoryTitle)
 3. You can now work on your feature, commit and push changes inside of your Feature Branch. Make sure to always choose **descriptive** commit messages.
