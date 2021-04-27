@@ -32,7 +32,7 @@ app.use(logConstroller.logRequests);
 
 app.use("/", mainController.sendOverview);
 app.use("/topics", topicController.sendTopics);
-app.use("/todos", todoController.senToDos);
+app.use("/todos", todoController.sendToDos);
 app.use("/bookmarks", bookmarkController.sendBookmarks);
 
 app.use(errorController.pageNotFound);
