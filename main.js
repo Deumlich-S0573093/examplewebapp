@@ -26,6 +26,9 @@ app.use(express.json());
 // basic request logging
 app.use(logConstroller.logRequests);
 
+// serving static files
+app.use(express.static("public"));
+
 // TODO: remove when controllers get implemented
 app.get("/", (req, res) => {
     res.render("index");
