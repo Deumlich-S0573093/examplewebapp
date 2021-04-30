@@ -2,6 +2,7 @@
 
 const express = require("express"),
     app = express(),
+    layouts = require("express-ejs-layouts"),
     logConstroller = require("./controllers/logController"),
     errorController = require("./controllers/errorController"),
     mainController = require("./controllers/mainController"),
@@ -11,7 +12,11 @@ const express = require("express"),
 
 let port = 0;
 
+app.set("view engine", "ejs");
 app.set("port", process.env.PORT || 3000);
+
+// register layouts (ejs)
+app.use(layouts);
 
 // body parsing
 app.use(
