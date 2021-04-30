@@ -1,0 +1,9 @@
+.themed-grid-col {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    background-color: rgb(208, 208, 208);
+    border: 1px solid rgba(86, 61, 124, .2);
+}
+.container {
+    align-content: flex-start;
+}
