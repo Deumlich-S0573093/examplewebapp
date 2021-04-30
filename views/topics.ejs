@@ -1,1 +1,8 @@
-<div>TOPICS</div>
+<div>TOPICS</div>   
+
+    <% activeTopics.forEach(topic => { %>
+        <h4>
+            <%= topic.title %>
+        </h4>
+      <%= topic.subtitle %>
+    <% }); %>
