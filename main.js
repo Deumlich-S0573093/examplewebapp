@@ -25,21 +25,21 @@ app.use(
     })
 );
 
+// serving static files
+app.use(express.static("public"));
+
 app.use(express.json());
 
 // basic request logging
 app.use(logConstroller.logRequests);
 
-// serving static files
-app.use(express.static("public"));
-
-app.use(errorController.pageNotFound);
-app.use(errorController.internalServer);
-
 app.get("/", mainController.sendOverview);
 app.get("/topics", topicController.sendTopics);
 app.get("/todos", todoController.sendToDos);
 app.get("/bookmarks", bookmarkController.sendBookmarks);
+
+app.use(errorController.pageNotFound);
+app.use(errorController.internalServer);
 
 port = app.get("port");
 
