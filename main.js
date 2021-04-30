@@ -30,10 +30,10 @@ app.use(express.json());
 // basic request logging
 app.use(logConstroller.logRequests);
 
-app.use("/", mainController.sendOverview);
-app.use("/topics", topicController.sendTopics);
-app.use("/todos", todoController.senToDos);
-app.use("/bookmarks", bookmarkController.sendBookmarks);
+app.get("/", mainController.sendOverview);
+app.get("/topics", topicController.sendTopics);
+app.get("/todos", todoController.sendToDos);
+app.get("/bookmarks", bookmarkController.sendBookmarks);
 
 app.use(errorController.pageNotFound);
 app.use(errorController.internalServer);

@@ -1,4 +1,4 @@
 exports.sendTopics = (req, res) => {
-    console.log(`Controller from: ${req.url}`);
-    res.send(`This Page is for: ${req.url}`);
+    console.log(`Controller from: topic!!`);
+    res.render("topics");
 };

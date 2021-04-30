@@ -1,4 +1,4 @@
-exports.senToDos = (req, res) => {
+exports.sendToDos = (req, res) => {
     console.log(`Controller from: ${req.url}`);
-    res.send(`This Page is for: ${req.url}`);
+    res.render("todos");
 };
