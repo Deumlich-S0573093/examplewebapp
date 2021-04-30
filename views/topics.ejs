@@ -1,8 +1,17 @@
-<div>TOPICS</div>   
-
+<h4>TOPICS</h4>   
+<section id="topic-list">
+<ul>
     <% activeTopics.forEach(topic => { %>
-        <h4>
-            <%= topic.title %>
-        </h4>
-      <%= topic.subtitle %>
-    <% }); %>
+    <li>
+        <h5>
+        <%= topic.title %>
+        </h5>
+        <ul>
+            <li>
+            <%= topic.subtitle %>
+            </li>
+        </ul>
+    </li>
+      <% }); %>
+</ul>
+</section>
