@@ -8,9 +8,8 @@ const express = require("express"),
     mainController = require("./controllers/mainController"),
     topicController = require("./controllers/topicController"),
     todoController = require("./controllers/todoController"),
-    bookmarkController = require("./controllers/bookmarkController");
-
-const mongoose = require("mongoose");
+    bookmarkController = require("./controllers/bookmarkController"),
+    mongoose = require("mongoose");
 
 mongoose.Promise = global.Promise;
 
@@ -51,7 +50,8 @@ app.get("/topics", topicController.sendTopics);
 app.get("/todos", todoController.sendToDos);
 
 app.get("/bookmarks", bookmarkController.getAllBookmarks);
-app.get("/bookmarks", bookmarkController.sendBookmarks);
+// Wird wegen -> app.get("/bookmarks", bookmarkController.getAllBookmarks); <- nicht mehr benötigt
+//app.get("/bookmarks", bookmarkController.sendBookmarks);
 app.post("/add", bookmarkController.saveBookmarks);
 
 app.use(errorController.pageNotFound);

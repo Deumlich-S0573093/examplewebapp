@@ -8,7 +8,7 @@
     </form>
     <br>
     <h4>Added Bookmarks:</h4>
-    <div class="list-container" style="border: thin solid black">
+    <div class="list-container">
     <% bookmarks.forEach(s => { %>
             <div class="bookmark">
                 <p>
@@ -19,6 +19,7 @@
                     <span class="item-label">URL:</span>
                     <%= s.url %>
                 </p>
+                <hr>
             </div>
         <% }); %>
     </div>

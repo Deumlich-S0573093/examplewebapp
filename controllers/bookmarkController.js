@@ -10,7 +10,7 @@ exports.getAllBookmarks = (req, res) => {
                 bookmarks: bookmarks
             });
         })
-        .catch(error => {
+        .catch((error) => {
             console.log(error.message);
             return [];
         })
@@ -19,9 +19,12 @@ exports.getAllBookmarks = (req, res) => {
         });
 };
 
+// Wird wegen getAllBookmarks() nicht mehr benötigt, meine ich
+/*
 exports.sendBookmarks = (req, res) => {
     res.render("bookmarks");
 };
+*/
 
 exports.saveBookmarks = (req, res) => {
     let newBookmark = new Bookmark({
@@ -33,7 +36,7 @@ exports.saveBookmarks = (req, res) => {
         .then(() => {
             res.render("done");
         })
-        .catch(error => {
+        .catch((error) => {
             res.send(error);
         });
 };
