@@ -8,7 +8,17 @@ const express = require("express"),
     mainController = require("./controllers/mainController"),
     topicController = require("./controllers/topicController"),
     todoController = require("./controllers/todoController"),
-    bookmarkController = require("./controllers/bookmarkController");
+    bookmarkController = require("./controllers/bookmarkController"),
+    mongoose = require("mongoose");
+
+mongoose.Promise = global.Promise;
+
+mongoose.connect(
+    "mongodb://localhost:27017/yapp-db",
+    {useNewUrlParser: true}
+);
+
+const db = mongoose.connection;
 
 let port = 0;
 
@@ -45,4 +55,8 @@ port = app.get("port");
 
 app.listen(port, () => {
     console.log(`Server running at http:localhost:${port}`);
+});
+
+db.once("open", () => {
+    console.log("Successfully connected to MongoDB using Mongoose!");
 });
