@@ -19,13 +19,6 @@ exports.getAllBookmarks = (req, res) => {
         });
 };
 
-// Wird wegen getAllBookmarks() nicht mehr benötigt, meine ich
-/*
-exports.sendBookmarks = (req, res) => {
-    res.render("bookmarks");
-};
-*/
-
 exports.saveBookmarks = (req, res) => {
     let newBookmark = new Bookmark({
         title: req.body.title,

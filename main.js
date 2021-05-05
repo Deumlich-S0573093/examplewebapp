@@ -50,8 +50,6 @@ app.get("/topics", topicController.sendTopics);
 app.get("/todos", todoController.sendToDos);
 
 app.get("/bookmarks", bookmarkController.getAllBookmarks);
-// Wird wegen -> app.get("/bookmarks", bookmarkController.getAllBookmarks); <- nicht mehr benötigt
-//app.get("/bookmarks", bookmarkController.sendBookmarks);
 app.post("/add", bookmarkController.saveBookmarks);
 
 app.use(errorController.pageNotFound);
