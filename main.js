@@ -3,12 +3,25 @@
 const express = require("express"),
     app = express(),
     layouts = require("express-ejs-layouts"),
-    logConstroller = require("./controllers/logController"),
+    logController = require("./controllers/logController"),
     errorController = require("./controllers/errorController"),
     mainController = require("./controllers/mainController"),
     topicController = require("./controllers/topicController"),
     todoController = require("./controllers/todoController"),
     bookmarkController = require("./controllers/bookmarkController");
+
+const mongoose = require("mongoose");
+
+mongoose.Promise = global.Promise;
+
+mongoose.connect(
+    "mongodb://localhost:27017/yapp-db",
+    {useNewUrlParser: true}
+);
+
+mongoose.set("useCreateIndex", true);
+
+const db = mongoose.connection;
 
 let port = 0;
 
@@ -31,12 +44,15 @@ app.use(express.static("public"));
 app.use(express.json());
 
 // basic request logging
-app.use(logConstroller.logRequests);
+app.use(logController.logRequests);
 
 app.get("/", mainController.sendOverview);
 app.get("/topics", topicController.sendTopics);
 app.get("/todos", todoController.sendToDos);
+
+app.get("/bookmarks", bookmarkController.getAllBookmarks);
 app.get("/bookmarks", bookmarkController.sendBookmarks);
+app.post("/add", bookmarkController.saveBookmarks);
 
 app.use(errorController.pageNotFound);
 app.use(errorController.internalServer);
@@ -45,4 +61,8 @@ port = app.get("port");
 
 app.listen(port, () => {
     console.log(`Server running at http:localhost:${port}`);
+});
+
+db.once("open", () => {
+    console.log("Successfully connected to MongoDB using Mongoose!");
 });
