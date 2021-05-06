@@ -1,17 +1,16 @@
-<h4>TOPICS</h4>   
+<h4>TOPICS</h4>
 <section id="topic-list">
-<ul>
-    <% activeTopics.forEach(topic => { %>
-    <li>
-        <h5>
-        <%= topic.title %>
-        </h5>
-        <ul>
-            <li>
-            <%= topic.subtitle %>
-            </li>
-        </ul>
-    </li>
-      <% }); %>
-</ul>
+    <% topics.forEach(s => { %>
+        <div class="topic">
+            <p>
+                <span class="item-label">Topic:</span>
+                <%= s.title %>
+            </p>
+            <hr>
+        </div>
+    <% }); %>
+    <form method="post" action="/addTopic">
+        <br><label id="newtopic">New Main Topic: <input type="text" name="title"></label>
+        <input type="submit" value="Add">
+    </form>
 </section>
