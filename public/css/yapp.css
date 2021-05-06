@@ -11,3 +11,7 @@
 #topic-list {
     margin-top: 10px;
 }
+
+.list-container {
+    border: thin solid black;
+}

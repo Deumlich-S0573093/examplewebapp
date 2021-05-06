@@ -3,7 +3,7 @@
 const express = require("express"),
     app = express(),
     layouts = require("express-ejs-layouts"),
-    logConstroller = require("./controllers/logController"),
+    logController = require("./controllers/logController"),
     errorController = require("./controllers/errorController"),
     mainController = require("./controllers/mainController"),
     topicController = require("./controllers/topicController"),
@@ -41,12 +41,14 @@ app.use(express.static("public"));
 app.use(express.json());
 
 // basic request logging
-app.use(logConstroller.logRequests);
+app.use(logController.logRequests);
 
 app.get("/", mainController.sendOverview);
 app.get("/topics", topicController.sendTopics);
 app.get("/todos", todoController.sendToDos);
-app.get("/bookmarks", bookmarkController.sendBookmarks);
+
+app.get("/bookmarks", bookmarkController.getAllBookmarks);
+app.post("/add", bookmarkController.saveBookmarks);
 
 app.use(errorController.pageNotFound);
 app.use(errorController.internalServer);

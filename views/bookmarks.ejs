@@ -1,1 +1,26 @@
-<div>BOOKMARKS</div>
+<div class="container">
+    <h3>Add your Bookmarks here:</h3>
+    <form method="post" action="/add">
+        <br><label>Title: <input type="text" name="title"></label>
+        <br><label>URL: <input type="text" name="url"></label>
+        <br>
+        <br><input type="submit" value="Add">
+    </form>
+    <br>
+    <h4>Added Bookmarks:</h4>
+    <div class="list-container">
+    <% bookmarks.forEach(s => { %>
+            <div class="bookmark">
+                <p>
+                    <span class="item-label">Title:</span>
+                    <%= s.title %>
+                </p>
+                <p>
+                    <span class="item-label">URL:</span>
+                    <%= s.url %>
+                </p>
+                <hr>
+            </div>
+        <% }); %>
+    </div>
+</div>
