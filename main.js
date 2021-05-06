@@ -15,7 +15,7 @@ mongoose.Promise = global.Promise;
 
 mongoose.connect(
     "mongodb://localhost:27017/yapp-db",
-    {useNewUrlParser: true}
+    {useNewUrlParser: true, useFindAndModify: false, useCreateIndex:true, useUnifiedTopology: true}
 );
 
 const db = mongoose.connection;
@@ -23,7 +23,7 @@ const db = mongoose.connection;
 let port = 0;
 
 app.set("view engine", "ejs");
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 3030);
 
 // register layouts (ejs)
 app.use(layouts);
