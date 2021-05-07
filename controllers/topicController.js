@@ -1,23 +1,33 @@
 "use strict";
+const Topic = require("../models/topic");
 
-const topics = [
-    {
-        title: "Topic A",
-        subtitle: "subtopic 1"
-    },
-    {
-        title: "Topic B",
-        subtitle: "subtopic 1"
-    },
-    {
-        title: "Topic C",
-        subtitle: "subtopic 1"
-    }
-];
+exports.getAllTopics = (req, res) => {
+    Topic.find({})
+        .exec()
+        .then(topics => {
+            res.render("topics", {
+                topics: topics
+            });
+        })
+        .catch((error) => {
+            console.log(error.message);
+            return [];
+        })
+        .then(() => {
+            console.log("promise complete");
+        });
+};
 
-exports.sendTopics = (req, res) => {
-    console.log(`Controller from: topic!!`);
-    res.render("topics", {
-        activeTopics: topics
+exports.saveTopics = (req, res) => {
+    let newTopic = new Topic({
+        title: req.body.title
     });
+    newTopic
+        .save()
+        .then(() => {
+        res.render("done");
+    })
+        .catch((error) => {
+            res.send(error);
+        });
 };
