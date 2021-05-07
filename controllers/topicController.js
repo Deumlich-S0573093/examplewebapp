@@ -1,5 +1,6 @@
 "use strict";
 const Topic = require("../models/topic");
+
 exports.getAllTopics = (req, res) => {
     Topic.find({})
         .exec()
@@ -24,8 +25,8 @@ exports.saveTopics = (req, res) => {
     newTopic
         .save()
         .then(() => {
-            res.render("done");
-        })
+        res.render("done");
+    })
         .catch((error) => {
             res.send(error);
         });
