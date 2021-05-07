@@ -7,7 +7,9 @@ exports.getAllBookmarks = (req, res) => {
         .exec()
         .then(bookmarks => {
             res.render("bookmarks", {
-                bookmarks: bookmarks
+                bookmarks: bookmarks,
+                savedData: false,
+                newBookmark: null
             });
         })
         .catch((error) => {
@@ -27,7 +29,11 @@ exports.saveBookmarks = (req, res) => {
     newBookmark
         .save()
         .then(() => {
-            res.render("done");
+            res.render("bookmarks", {
+                bookmarks: null,
+                savedData: true,
+                newBookmark: newBookmark
+            });
         })
         .catch((error) => {
             res.send(error);

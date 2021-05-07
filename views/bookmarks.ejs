@@ -6,7 +6,10 @@
         <br>
         <br><input type="submit" value="Add">
     </form>
-    <br>
+    <br> 
+    <% if (savedData==true) { %>
+        <p>Bookmark "<%= newBookmark.title %>" has been saved!</p>
+    <% } else { %>
     <h4>Added Bookmarks:</h4>
     <div class="list-container">
     <% bookmarks.forEach(s => { %>
@@ -23,4 +26,5 @@
             </div>
         <% }); %>
     </div>
+    <% } %>
 </div>
