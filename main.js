@@ -20,10 +20,15 @@ mongoose.connect(
 
 const db = mongoose.connection;
 
+//seperating environment databases
+
 let port = 0;
 
+if (process.env.NODE_ENV === "test")
+     app.set("port", 3001);
+else app.set("port", process.env.PORT || 3030);
+
 app.set("view engine", "ejs");
-app.set("port", process.env.PORT || 3030);
 
 // register layouts  (ejs)
 app.use(layouts);
