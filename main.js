@@ -25,7 +25,7 @@ let port = 0;
 app.set("view engine", "ejs");
 app.set("port", process.env.PORT || 3030);
 
-// register layouts (ejs)
+// register layouts  (ejs)
 app.use(layouts);
 
 // body parsing
