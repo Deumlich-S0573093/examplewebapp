@@ -6,7 +6,8 @@ const mongoose = require("mongoose");
 //Define schema properties
 const bookmarkSchema = mongoose.Schema({
         title: String,
-        url: String
+        url: String,
+        // labels: [] <--- von Labels - Schema
     });
 
 //Export the model
