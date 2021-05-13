@@ -15,7 +15,8 @@ mongoose.Promise = global.Promise;
 
 mongoose.connect(
     process.env.MONGODB_URI ||
-    "mongodb://localhost:27017/yapp-db",
+    /* "mongodb://localhost:27017/yapp-db", */
+    "mongodb+srv://group04:wtat-ss21@cluster0.lsuqg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     {useNewUrlParser: true, useFindAndModify: false, useCreateIndex:true, useUnifiedTopology: true}
 );
 
