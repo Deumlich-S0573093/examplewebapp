@@ -14,6 +14,7 @@ const express = require("express"),
 mongoose.Promise = global.Promise;
 
 mongoose.connect(
+    process.env.MONGODB_URI ||
     "mongodb://localhost:27017/yapp-db",
     {useNewUrlParser: true, useFindAndModify: false, useCreateIndex:true, useUnifiedTopology: true}
 );
