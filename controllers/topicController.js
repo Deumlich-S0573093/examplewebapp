@@ -20,13 +20,15 @@ exports.getAllTopics = (req, res) => {
 
 exports.saveTopics = (req, res) => {
     let newTopic = new Topic({
-        title: req.body.title
+        title: req.body.title,
+        description: req.body.description
+        //TODO: author: here must be completed after implementing the user scheme
     });
     newTopic
         .save()
         .then(() => {
-        res.render("done");
-    })
+            res.redirect('back');
+        })
         .catch((error) => {
             res.send(error);
         });

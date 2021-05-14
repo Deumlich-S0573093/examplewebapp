@@ -46,10 +46,10 @@ app.use(logController.logRequests);
 app.get("/", mainController.sendOverview);
 app.get("/topics", topicController.getAllTopics);
 app.get("/todos", todoController.sendToDos);
-
 app.get("/bookmarks", bookmarkController.getAllBookmarks);
+
 app.post("/add", bookmarkController.saveBookmarks);
-app.post("/addTopic", topicController.saveTopics);
+app.post("/topics", topicController.saveTopics);
 
 app.use(errorController.pageNotFound);
 app.use(errorController.internalServer);

@@ -1,19 +1,77 @@
 <div class="container">
-    <h3>TOPICS</h3>
-    <section id="topic-list">
-        <% topics.forEach(s => { %>
-            <div class="topic">
-                <p>
-                    <span class="item-label">Topic:</span>
-                    <%= s.title %>
-                </p>
-                <hr>
-            </div>
-        <% }); %>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+    <script>
+        function makeComment() {
+            var x = document.getElementById("makeComment");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
 
-            <form method="post" action="/addTopic">
-            <br><label id="newtopic">New Main Topic: <input type="text" name="title"></label>
-            <input type="submit" value="Add">
+    <div>
+        <button type="button" class="btn btn-primary" onclick="myFunction()">+ New Topic</button>
+        <br>
+    </div>
+
+    <div id="myDIV" style="display: none; width: 100%;padding: 20px 0;margin-top: 20px;">
+        <form method="post">
+            <fieldset>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Title: </span>
+                    <input type="text" name="title" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-default" required>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-text">Description: </span>
+                    <textarea class="form-control" name="description" aria-label="With textarea" required></textarea>
+                </div>
+                <br><input class="save" type="submit" value="Add">
+            </fieldset>
         </form>
+    </div>
+
+    <section id="topic-list">
+        <fieldset>
+            <legend>Your list of Topics</legend>
+            <table class="table table-striped" border="1" style="width: 100%;">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Creation Date</th>
+                    <th>Author</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% topics.forEach(s => { %>
+                    <tr>
+                        <td></td>
+                        <td><%= s.title %></td>
+                        <td><%= s.description %></td>
+                        <td><%= s.creationDate.toLocaleString() %></td>
+                        <td><%= s.author %></td>
+                        <td>
+                            <button type="button" class="btn btn-primary" onclick="makeComment()">Show Details</button>
+                        </td>
+                    </tr>
+                <% }); %>
+                </tbody>
+
+            </table>
+        </fieldset>
     </section>
 </div>
