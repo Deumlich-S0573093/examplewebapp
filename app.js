@@ -58,10 +58,8 @@ app.use(errorController.internalServer);
 
 port = app.get("port");
 
-app.listen(port, () => {
-    console.log(`Server running at http:localhost:${port}`);
-});
-
 db.once("open", () => {
     console.log("Successfully connected to MongoDB using Mongoose!");
 });
+
+module.exports = app;
