@@ -1,4 +1,4 @@
-const app = require("../app");
+const app = require("../../app");
 const supertest = require("supertest");
 
 // creates request to test endpoints
@@ -15,13 +15,11 @@ describe("Execute some smoke tests", () => {
 
     });
     
-    // Sends GET request to /test endpoint
+    // Sends GET request to the root route /
     it("Gets the test endpoint", async done => {
-        const res = await request.get("/test");
+        const res = await request.get("/");
         expect(res.status).toBe(200);
-        expect(res.body.message).toBe('pass!');
         done()
-
     });
   
   });

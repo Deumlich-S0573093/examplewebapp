@@ -19,9 +19,10 @@ mongoose.connect(
     "mongodb+srv://group04:wtat-ss21@cluster0.lsuqg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     {
         useNewUrlParser: true,
-        //useFindAndModify: false,
-        //useCreateIndex:true,
-        useUnifiedTopology: false}
+        useFindAndModify: false,
+        useCreateIndex:true,
+        useUnifiedTopology: false
+    }
 );
 
 const db = mongoose.connection;
