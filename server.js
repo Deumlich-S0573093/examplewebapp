@@ -1,4 +1,12 @@
 const app = require("./app");
+/*const result = dotenv.config()
+
+if (result.error) {
+  throw result.error
+}
+
+console.log(result.parsed)
+*/
 
 app.set("port", process.env.PORT || 3030);
 
