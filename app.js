@@ -17,7 +17,12 @@ mongoose.connect(
     process.env.MONGODB_URI ||
     /* "mongodb://localhost:27017/yapp-db", */
     "mongodb+srv://group04:wtat-ss21@cluster0.lsuqg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-    {useNewUrlParser: true, useFindAndModify: false, useCreateIndex:true, useUnifiedTopology: true}
+    {
+        useNewUrlParser: true,
+        useFindAndModify: false,
+        useCreateIndex:true,
+        useUnifiedTopology: false
+    }
 );
 
 const db = mongoose.connection;
@@ -25,7 +30,6 @@ const db = mongoose.connection;
 let port = 0;
 
 app.set("view engine", "ejs");
-app.set("port", process.env.PORT || 3030);
 
 // register layouts (ejs)
 app.use(layouts);
@@ -53,15 +57,17 @@ app.get("/bookmarks", bookmarkController.getAllBookmarks);
 app.post("/add", bookmarkController.saveBookmarks);
 app.post("/addTopic", topicController.saveTopics);
 
+app.get("/test", async (req, res) => {
+    res.json({message: 'pass!'});
+});
+
 app.use(errorController.pageNotFound);
 app.use(errorController.internalServer);
 
 port = app.get("port");
 
-app.listen(port, () => {
-    console.log(`Server running at http:localhost:${port}`);
+db.once("open", () => {
+    //console.log("Successfully connected to MongoDB using Mongoose!");
 });
 
-db.once("open", () => {
-    console.log("Successfully connected to MongoDB using Mongoose!");
-});
+module.exports = app;
