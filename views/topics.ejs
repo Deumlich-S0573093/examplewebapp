@@ -1,6 +1,6 @@
 <div class="container">
     <script>
-        function myFunction() {
+        function addNewTopic() {
             var x = document.getElementById("myDIV");
             if (x.style.display === "none") {
                 x.style.display = "block";
@@ -10,22 +10,17 @@
         }
     </script>
     <script>
-        function makeComment() {
-            var x = document.getElementById("makeComment");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
+        function deleteMe() {
+            alert("You sure?")
         }
     </script>
 
     <div>
-        <button type="button" class="btn btn-primary" onclick="myFunction()">+ New Topic</button>
+        <button type="button" class="btn btn-primary" onclick="addNewTopic()">+ New Topic</button>
         <br>
     </div>
 
-    <div id="myDIV" style="display: none; width: 100%;padding: 20px 0;margin-top: 20px;">
+    <section id="myDIV" style="display: none; width: 100%;padding: 20px 0;margin-top: 20px;">
         <form method="post">
             <fieldset>
                 <div class="input-group mb-3">
@@ -40,12 +35,12 @@
                 <br><input class="save" type="submit" value="Add">
             </fieldset>
         </form>
-    </div>
-
-    <section id="topic-list">
+    </section>
+<br>
+    <section id="override-fieldset">
         <fieldset>
             <legend>Your list of Topics</legend>
-            <table class="table table-striped" border="1" style="width: 100%;">
+            <table class="table table-striped" style="width: 100%;">
                 <thead>
                 <tr>
                     <th>#</th>
@@ -53,19 +48,38 @@
                     <th>Description</th>
                     <th>Creation Date</th>
                     <th>Author</th>
-                    <th>Action</th>
+                    <th>Show</th>
+                    <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
-                <% topics.forEach(s => { %>
+                <% topics.forEach(topic => { %>
                     <tr>
                         <td></td>
-                        <td><%= s.title %></td>
-                        <td><%= s.description %></td>
-                        <td><%= s.creationDate.toLocaleString() %></td>
-                        <td><%= s.author %></td>
+                        <td><%= topic.title %></td>
+                        <td><%= topic.description %></td>
+                        <td><%= topic.creationDate.toLocaleString() %></td>
+                        <td><%= topic.author %></td>
                         <td>
-                            <button type="button" class="btn btn-primary" onclick="makeComment()">Show Details</button>
+                            <button class="btn" onclick="location.href='topics/<%=topic.id%>'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-box-arrow-in-up-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                          d="M6.364 13.5a.5.5 0 0 0 .5.5H13.5a1.5 1.5 0 0 0 1.5-1.5v-10A1.5 1.5 0 0 0 13.5 1h-10A1.5 1.5 0 0 0 2 2.5v6.636a.5.5 0 1 0 1 0V2.5a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v10a.5.5 0 0 1-.5.5H6.864a.5.5 0 0 0-.5.5z"/>
+                                    <path fill-rule="evenodd"
+                                          d="M11 5.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793l-8.147 8.146a.5.5 0 0 0 .708.708L10 6.707V10.5a.5.5 0 0 0 1 0v-5z"/>
+                                </svg>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-trash" viewBox="0 0 16 16" onclick="deleteMe()">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                    <path fill-rule="evenodd"
+                                          d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                </svg>
+                            </button>
                         </td>
                     </tr>
                 <% }); %>

@@ -2,9 +2,9 @@
   "name": "yapp",
   "version": "1.0.0",
   "description": "Yet another ToDo App; but sophisticated",
-  "main": "main.js",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon main.js",
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -14,6 +14,7 @@
   "author": "Group04 - WTAT -SS21",
   "license": "ISC",
   "dependencies": {
+    "bootstrap-icons": "^1.5.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",

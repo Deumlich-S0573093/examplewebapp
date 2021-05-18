@@ -15,7 +15,30 @@
 .list-container {
     border: thin solid black;
 }
+
 #newtopic{
     font-size: 20px;
     margin-left: 7px;
 }
+
+#override-fieldset fieldset {
+    border:  2px solid #ccc;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+    box-shadow: 0 0 10px #666;
+
+}
+
+#override-fieldset legend {
+    position: relative;
+    border:  1px solid #ccc;
+    border-radius: 12px;
+    padding: 15px 15px;
+    line-height: 18px;
+}
+
+
+
+
+

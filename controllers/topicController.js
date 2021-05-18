@@ -5,7 +5,7 @@ exports.getAllTopics = (req, res) => {
     Topic.find({})
         .exec()
         .then(topics => {
-            res.render("topics", {
+            res.render('topics', {
                 topics: topics
             });
         })
@@ -14,7 +14,7 @@ exports.getAllTopics = (req, res) => {
             return [];
         })
         .then(() => {
-            console.log("promise complete");
+            console.log('promise complete');
         });
 };
 
@@ -33,3 +33,18 @@ exports.saveTopics = (req, res) => {
             res.send(error);
         });
 };
+
+exports.getTopic = (req, res) => {
+    const topicId = req.params.id
+    Topic.findById(topicId, function (error, topic) {
+        if (error) {
+            res.send(error);
+        } else {
+            // console.log(req.params.id);
+            // console.log(topic);
+            res.render('topic',{topic:topic});
+        }
+    });
+
+
+}
