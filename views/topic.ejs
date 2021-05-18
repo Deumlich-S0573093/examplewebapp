@@ -1,0 +1,40 @@
+<div class="container">
+
+    <section id="override-fieldset">
+        <fieldset>
+            <legend>Topic: <%= topic.title %></legend>
+            <table class="table table-striped" border="1" style="width: 100%;">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Description</th>
+                    <th>Creation Date</th>
+                    <th>Author</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td><%= topic.description %></td>
+                        <td><%= topic.creationDate.toLocaleString() %></td>
+                        <td><%= topic.author %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <section>
+            <fieldset>
+                <section id="commentSection" style="width: 100%;padding: 10px 0;margin-top: 5px;">
+                    <form method="post">
+                        <fieldset>
+                            <div class="mb-3">
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                            <button type="button" class="btn btn-primary">Post a Comment</button>
+                        </fieldset>
+                    </form>
+                </section>
+            </fieldset>
+        </section>
+    </section>
+</div>

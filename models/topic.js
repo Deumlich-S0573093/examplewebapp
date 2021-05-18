@@ -18,7 +18,7 @@ const topicSchema = mongoose.Schema({
             ref: 'User'
         }
     }],
-    isSubtopic: Boolean,
+    isSubtopic: {type: Boolean, default: false},
     subTopics: [{type: mongoose.Schema.Types.ObjectId, ref: 'Topic'}]
 
 });
