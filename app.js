@@ -15,12 +15,16 @@ mongoose.Promise = global.Promise;
 
 mongoose.connect(
     process.env.MONGODB_URI ||
-    //"mongodb://localhost:27017/yapp-db",
+
+    /* "mongodb://localhost:27017/yapp-db", */
+
     "mongodb+srv://group04:wtat-ss21@cluster0.lsuqg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     {
         useNewUrlParser: true,
         useFindAndModify: false,
+
         useCreateIndex: true,
+
         useUnifiedTopology: false
     }
 );
@@ -52,11 +56,13 @@ app.use(logController.logRequests);
 app.get("/", mainController.sendOverview);
 app.get("/topics", topicController.getAllTopics);
 app.get("/todos", todoController.sendToDos);
+
 app.get("/bookmarks", bookmarkController.getAllBookmarks);
 app.get("/topics/:id", topicController.getTopic);
 
 app.post("/add", bookmarkController.saveBookmarks);
 app.post("/topics", topicController.saveTopics);
+
 
 
 app.get("/test", async (req, res) => {
@@ -69,9 +75,11 @@ app.use(errorController.internalServer);
 port = app.get("port");
 
 db.once("open", () => {
+
     //This was commented out -  but it works under ubuntu
     //please remove it if this does not work under win or Mac
     console.log("Successfully connected to MongoDB using Mongoose!");
 });
 
 module.exports = app
+
