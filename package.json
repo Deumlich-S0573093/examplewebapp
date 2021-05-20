@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "description": "Yet another ToDo App; but sophisticated",
   "main": "server.js",
+  "engines": {
+    "node": "14.x",
+    "npm": "7.x"
+  },
   "scripts": {
     "start": "nodemon server.js",
     "test": "jest --detectOpenHandles"
   },
   "repository": {
     "type": "git",
-    "url": "https://gl-imi.f4.htw-berlin.de/group04_wtat_ss21/yapp.git"
+    "url": "https://github.com/yetanothertodoapp/yapp.git"
   },
   "author": "Group04 - WTAT -SS21",
   "license": "ISC",
