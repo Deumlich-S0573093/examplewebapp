@@ -1,9 +1,9 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 describe('Tests for the database connections', () => {
     
     it('shall test the connection to local db', () => {
-        const databaseName = 'test'
+        const databaseName = 'yapp-db'
         beforeAll(async () => {
             const url = `mongodb://127.0.0.1/${databaseName}`
             await mongoose.connect(url, { useNewUrlParser: true })
