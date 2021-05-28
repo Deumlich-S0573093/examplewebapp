@@ -54,14 +54,18 @@ app.use(express.json());
 app.use(logController.logRequests);
 
 app.get("/", mainController.sendOverview);
+
 app.get("/topics", topicController.getAllTopics);
+app.get("/topics/:id", topicController.getTopic);
+//app.put("/topics/:id/update", topicController.saveSubtopics);
+app.post("/topics", topicController.saveTopics);
+app.delete("/topics/:id", topicController.deleteTopic);
+
 app.get("/todos", todoController.sendToDos);
 
 app.get("/bookmarks", bookmarkController.getAllBookmarks);
-app.get("/topics/:id", topicController.getTopic);
 
 app.post("/add", bookmarkController.saveBookmarks);
-app.post("/topics", topicController.saveTopics);
 
 
 

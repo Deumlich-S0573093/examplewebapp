@@ -1,5 +1,38 @@
 <div class="container">
 
+    <script>
+        function addNewSubtopic() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+
+    <div>
+        <button type="button" class="btn btn-primary" onclick="addNewSubtopic()">+ New Subtopic</button>
+        <br>
+    </div>
+
+    <section id="myDIV" style="display: none; width: 100%;padding: 20px 0;margin-top: 20px;">
+        <form method="post">
+            <fieldset>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Title: </span>
+                    <input type="text" name="title" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-default" required>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-text">Description: </span>
+                    <textarea class="form-control" name="description" aria-label="With textarea" required></textarea>
+                </div>
+                <br><input class="save" type="submit" value="Add">
+            </fieldset>
+        </form>
+    </section>
+    <br>
     <section id="override-fieldset">
         <fieldset>
             <legend>Topic: <%= topic.title %></legend>
@@ -13,12 +46,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td><%= topic.description %></td>
-                        <td><%= topic.creationDate.toLocaleString() %></td>
-                        <td><%= topic.author %></td>
-                    </tr>
+                <tr>
+                    <td></td>
+                    <td><%= topic.description %></td>
+                    <td><%= topic.creationDate.toLocaleString() %></td>
+                    <td><%= topic.author %></td>
+                </tr>
                 </tbody>
             </table>
         </fieldset>

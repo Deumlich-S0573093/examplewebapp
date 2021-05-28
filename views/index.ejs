@@ -1,21 +1,64 @@
-<h1>YAPP Overview Page</h1>
-<div class="row mb-3">
-    <div class="col-md-4 themed-grid-col">
-        <h4>Topics</h4> <br>
-        Topics go here <br>
-        and here <br>
-        and here
+<div class="container-fluid">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <!--    TODO change the user with the name of ther user as she/he logs in-->
+            <h1 class="display-4">Hello "User"!</h1>
+        </div>
     </div>
-    <div class="col-md-4 themed-grid-col">
-        <h4>ToDo's</h4> <br>
-        ToDo's go here <br>
-        and here <br>
-        and here
-    </div>
-    <div class="col-md-4 themed-grid-col">
-        <h4>Links</h4> <br>
-        Links go here <br>
-        and here <br>
-        and here
+    <div class="row justify-content-center row-cols-auto">
+        <div class="col-md-auto">
+            <div class="shadow p-3 rounded-3 p-3 border bg-light">
+                <table class="table table-striped" style="width: 100%;">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Your Topics</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% topics.forEach(topic => { %>
+                        <tr>
+                            <td></td>
+                            <td><%= topic.title %></td>
+                        </tr>
+                        <%topic.subTopics.forEach(topic => {%>
+                            <tr>
+                                <td></td>
+                                <td><%= topic.title %></td>
+                            </tr>
+                        <%});%>
+                    <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-auto" id="override-column">
+            <div class="shadow p-3 rounded-3 p-3 border bg-light">
+                <h4>ToDo's</h4> <br>
+                ToDo's go here <br>
+                and here <br>
+                and here
+            </div>
+        </div>
+        <div class="col-md-auto">
+            <div class="shadow p-3 rounded-3 p-3 border bg-light">
+                <h4>Links</h4> <br>
+                Links go here <br>
+                and here <br>
+                and here
+            </div>
+        </div>
     </div>
 </div>
+
+<script>
+    function rowNumber() {
+        var table = document.getElementsByTagName('table')[0],
+            rows = table.rows,
+            text = 'textContent' in document ? 'textContent' : 'innerText';
+
+        for (var i = 0, len = rows.length; i < len; i++) {
+            rows[i].children[0][text] = i + ': ' + rows[i].children[0][text];
+        }
+    }
+</script>
