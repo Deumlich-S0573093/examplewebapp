@@ -59,7 +59,7 @@ app.get("/topics", topicController.getAllTopics);
 app.get("/topics/:id", topicController.getTopic);
 //app.put("/topics/:id/update", topicController.saveSubtopics);
 app.post("/topics", topicController.saveTopics);
-app.delete("/topics/:id", topicController.deleteTopic);
+app.delete("/topics/:id/delete", topicController.deleteTopic, topicController.redirectView);
 
 app.get("/todos", todoController.sendToDos);
 

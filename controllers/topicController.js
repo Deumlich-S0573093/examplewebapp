@@ -66,44 +66,27 @@ module.exports = {
     //             console.log(`Error updating Topic by ID: ${error.message}`);
     //             next(error);
     //         });
-    // },
-
-    deleteTopic : (req, res) => {
-        console.log("DELETE - /topics/:id");
-        return Topic.findById(req.params.id, function (err, topic) {
-            if (!topic) {
-                res.statusCode = 404;
-                return res.send({error: 'Not found'});
-            }
-
-            return topic.remove(function (err) {
-                if (!err) {
-                    console.log('Removed topic');
-                    return res.send({status: 'OK'});
-                } else {
-                    res.statusCode = 500;
-                    console.log('Internal error(%d): %s', res.statusCode, err.message);
-                    return res.send({error: 'Server error'});
-                }
-            })
-        })
-    }
-
-    // deleteTopic: async (req, res) => {
-    //     let topicId = req.params.id;
-    //     console.log(topicId,'api/delete')
-    //     console.info("I am here")
-    //
-    //     await Topic.findByIdAndRemove(topicId) //Deleting a user with the findByIdAndRemove method
-    //         .then(() => {
-    //             console.log("I am here2")
-    //             res.redirect('back');
-    //         })
-    //         .catch(error => {
-    //             console.log(`Error deleting user by ID: ${error.message}`);
-    //         });
     // }
 
+    deleteTopic: async (req, res) => {
+        let topicId = req.params.id;
+        console.log(topicId,'api/delete')
+        console.info("I am here")
+
+        await Topic.findByIdAndDelete(topicId) //Deleting a user with the findByIdAndRemove method
+            .then(() => {
+                res.locals.redirect = "/topics";
+            })
+            .catch(error => {
+                console.log(`Error deleting user by ID: ${error.message}`);
+            });
+    },
+
+    redirectView: (req, res, next) => {
+        let redirectPath = res.locals.redirect;
+        if (redirectPath) res.redirect(redirectPath);
+        else next();
+    },
 
     // show: (req, res, next) => {
     //     let userId = req.params.id; //Collect the user ID from the request params.
